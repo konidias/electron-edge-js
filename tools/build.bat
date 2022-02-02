@@ -26,8 +26,8 @@ if "%1" neq "" (
 )
 if "%VERSIONS%" equ "" set VERSIONS=0.10.0
 pushd %SELF%\..
-for %%V in (%VERSIONS%) do call :build ia32 x86 %%V 
-for %%V in (%VERSIONS%) do call :build x64 x64 %%V 
+for %%V in (%VERSIONS%) do call :build ia32 x86 %%V
+for %%V in (%VERSIONS%) do call :build x64 x64 %%V
 popd
 
 exit /b 0
@@ -57,8 +57,10 @@ if "%3" equ "2.0.0" (
 ) else if "%3" equ "12.0.0" (
     SET target=14.16.0
 ) else if "%3" equ "13.0.0" (
-    SET target=14.16.0
-) else (
+      SET target=14.16.0
+  ) else if "%3" equ "17.0.0" (
+        SET target=16.13.0
+    ) else (
     echo edge-electron-js does not support Electron %3.
     exit /b -1
 )
